@@ -1,0 +1,43 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.1.60'
+    id 'org.junit.platform.gradle.plugin' version '1.0.1'
+}
+
+group 'com.titicaca.data.etl'
+version '1.0-SNAPSHOT'
+
+ext {
+    junitJupiterVersion = '5.0.1'
+    kafkaVersion = '1.0.0'
+    kotlinVersion = '1.1.60'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version: kotlinVersion
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: kafkaVersion
+    compile group: 'org.apache.kafka', name: 'kafka-streams', version: kafkaVersion
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.9.1'
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.9.0'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.2'
+
+    testCompile group: 'com.google.truth', name: 'truth', version: '0.36'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitJupiterVersion
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junitJupiterVersion
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitJupiterVersion
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.3.1'
+}
