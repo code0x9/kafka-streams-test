@@ -1,4 +1,4 @@
-package com.titicaca.data.etl
+package com.mark.study.etl.kafka
 
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.KafkaStreams
